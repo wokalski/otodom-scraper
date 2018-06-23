@@ -18,7 +18,7 @@
     "refmterr": "^3.1.7",
     "ocaml": "~4.6.1",
     "@opam/yojson": "~1.4.1",
-    "@opam/cohttp": "1.0.2",
+    "@opam/cohttp-lwt-unix": "1.0.2",
     "@opam/lambdasoup": "~0.6.3",
     "@opam/re": "~1.7.3"
   },

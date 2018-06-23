@@ -1,5 +1,5 @@
 {
-  "rootDependenciesHash": "478586cdea0a65bbcf06043a4303a6af",
+  "rootDependenciesHash": "16472ee0ceef522131cf07b45c491abe",
   "solution": {
     "root": { "name": "Properties", "version": "path:.", "source": "path:." },
     "dependencies": [
@@ -36,6 +36,44 @@
         }
       },
       {
+        "name": "@opam/conduit-lwt",
+        "version": "opam:1.1.0",
+        "source":
+          "archive:https://github.com/mirage/ocaml-conduit/releases/download/v1.1.0/conduit-1.1.0.tbz#eb1d02c80d06ef812d97dc1ab588b597",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/conduit-lwt",
+            "version": "1.1.0",
+            "esy": {
+              "build": [
+                [
+                  "jbuilder", "subst", "-p", "%{name}%", "--name", "%{name}%"
+                ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/lwt": "*",
+              "@opam/conduit": "*",
+              "@opam/ppx_sexp_conv": "*",
+              "@opam/base-unix": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
         "name": "@opam/yojson",
         "version": "opam:1.4.1",
         "source":
@@ -63,6 +101,50 @@
               "@opam/easy-format": "*",
               "@opam/cppo": "*",
               "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/logs",
+        "version": "opam:0.6.2",
+        "source":
+          "archive:http://erratique.ch/software/logs/releases/logs-0.6.2.tbz#19f824c02c83c6dddc3bfb6459e4743e",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/logs",
+            "version": "0.6.2",
+            "esy": {
+              "build": [
+                [
+                  "ocaml", "pkg/pkg.ml", "build", "--pinned", "%{pinned}%",
+                  "--with-js_of_ocaml", "%{js_of_ocaml:installed}%",
+                  "--with-fmt", "%{fmt:installed}%", "--with-cmdliner",
+                  "%{cmdliner:installed}%", "--with-lwt", "%{lwt:installed}%"
+                ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {
+              "@opam/lwt": "*",
+              "@opam/cmdliner": "*",
+              "@opam/fmt": "*",
+              "@opam/js_of_ocaml": "*"
+            },
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/result": "*",
+              "@opam/topkg": "*",
+              "@opam/ocamlbuild": "*",
+              "@opam/ocamlfind": "*"
             }
           },
           "files": [],
@@ -163,43 +245,6 @@
         }
       },
       {
-        "name": "@opam/uri",
-        "version": "opam:1.9.6",
-        "source":
-          "archive:https://github.com/mirage/ocaml-uri/releases/download/v1.9.6/uri-1.9.6.tbz#a6c4fbbe8e3fd84059fac7bd7bc7b3d2",
-        "opam": {
-          "packageJson": {
-            "name": "@opam/uri",
-            "version": "1.9.6",
-            "esy": {
-              "build": [
-                [ "jbuilder", "subst" ],
-                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
-                [ "sh", "-c", "(esy-installer || true)" ]
-              ],
-              "install": [],
-              "buildsInSource": true,
-              "exportedEnv": {}
-            },
-            "peerDependencies": { "ocaml": "*" },
-            "optDependencies": {},
-            "dependencies": {
-              "ocaml": "*",
-              "@esy-ocaml/substs": "*",
-              "@esy-ocaml/esy-installer": "*",
-              "@opam/stringext": "*",
-              "@opam/sexplib": "*",
-              "@opam/re": "*",
-              "@opam/ppx_sexp_conv": "*",
-              "@opam/base-bytes": "*",
-              "@opam/jbuilder": "*"
-            }
-          },
-          "files": [],
-          "patches": []
-        }
-      },
-      {
         "name": "@opam/menhir",
         "version": "opam:20171013",
         "source":
@@ -235,6 +280,82 @@
               "@esy-ocaml/esy-installer": "*",
               "@opam/ocamlfind": "*",
               "@opam/ocamlbuild": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/conduit-lwt-unix",
+        "version": "opam:1.1.0",
+        "source":
+          "archive:https://github.com/mirage/ocaml-conduit/releases/download/v1.1.0/conduit-1.1.0.tbz#eb1d02c80d06ef812d97dc1ab588b597",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/conduit-lwt-unix",
+            "version": "1.1.0",
+            "esy": {
+              "build": [
+                [
+                  "jbuilder", "subst", "-p", "%{name}%", "--name", "%{name}%"
+                ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {
+              "@opam/launchd": "*",
+              "@opam/lwt_ssl": "*",
+              "@opam/tls": "*"
+            },
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ipaddr": "*",
+              "@opam/uri": "*",
+              "@opam/lwt": "*",
+              "@opam/conduit-lwt": "*",
+              "@opam/ppx_sexp_conv": "*",
+              "@opam/base-unix": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ppx_tools_versioned",
+        "version": "opam:5.1",
+        "source":
+          "archive:https://github.com/ocaml-ppx/ppx_tools_versioned/archive/5.1.tar.gz#e48cc87d6da6c2f3020fd8dfe8fe50de",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ppx_tools_versioned",
+            "version": "5.1",
+            "esy": {
+              "build": [
+                [ "%{make}%", "all" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [ [ "%{make}%", "install" ] ],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/ocamlfind": "*"
             }
           },
           "files": [],
@@ -428,6 +549,46 @@
           "archive:https://registry.npmjs.org/@esy-ocaml/reason/-/reason-3.2.0.tgz#9b68a6649f3ba38a11a0fdc7b7c004cab512ac8e"
       },
       {
+        "name": "@opam/ocamlbuild",
+        "version": "opam:0.12.0",
+        "source":
+          "archive:https://github.com/ocaml/ocamlbuild/archive/0.12.0.tar.gz#442baa19470bd49150f153122e22907b",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ocamlbuild",
+            "version": "0.12.0",
+            "esy": {
+              "build": [
+                [
+                  "%{make}%", "-f", "configure.make", "all",
+                  "OCAMLBUILD_PREFIX=%{prefix}%",
+                  "OCAMLBUILD_BINDIR=%{bin}%", "OCAMLBUILD_LIBDIR=%{lib}%",
+                  "OCAMLBUILD_MANDIR=%{man}%",
+                  "OCAML_NATIVE=%{ocaml-native}%",
+                  "OCAML_NATIVE_TOOLS=%{ocaml-native}%"
+                ],
+                [
+                  "%{make}%", "check-if-preinstalled", "all", "opam-install"
+                ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
         "name": "@opam/sexplib",
         "version": "opam:v0.11.0",
         "source":
@@ -462,27 +623,18 @@
         }
       },
       {
-        "name": "@opam/ocamlbuild",
-        "version": "opam:0.12.0",
+        "name": "@opam/magic-mime",
+        "version": "opam:1.1.0",
         "source":
-          "archive:https://github.com/ocaml/ocamlbuild/archive/0.12.0.tar.gz#442baa19470bd49150f153122e22907b",
+          "archive:https://github.com/mirage/ocaml-magic-mime/releases/download/v1.1.0/magic-mime-1.1.0.tbz#341ab5133c2e17ca645f23a0149025d1",
         "opam": {
           "packageJson": {
-            "name": "@opam/ocamlbuild",
-            "version": "0.12.0",
+            "name": "@opam/magic-mime",
+            "version": "1.1.0",
             "esy": {
               "build": [
-                [
-                  "%{make}%", "-f", "configure.make", "all",
-                  "OCAMLBUILD_PREFIX=%{prefix}%",
-                  "OCAMLBUILD_BINDIR=%{bin}%", "OCAMLBUILD_LIBDIR=%{lib}%",
-                  "OCAMLBUILD_MANDIR=%{man}%",
-                  "OCAML_NATIVE=%{ocaml-native}%",
-                  "OCAML_NATIVE_TOOLS=%{ocaml-native}%"
-                ],
-                [
-                  "%{make}%", "check-if-preinstalled", "all", "opam-install"
-                ],
+                [ "jbuilder", "subst" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
                 [ "sh", "-c", "(esy-installer || true)" ]
               ],
               "install": [],
@@ -494,7 +646,8 @@
             "dependencies": {
               "ocaml": "*",
               "@esy-ocaml/substs": "*",
-              "@esy-ocaml/esy-installer": "*"
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/jbuilder": "*"
             }
           },
           "files": [],
@@ -597,16 +750,17 @@
         }
       },
       {
-        "name": "@opam/ppx_sexp_conv",
-        "version": "opam:v0.11.0",
+        "name": "@opam/cohttp-lwt",
+        "version": "opam:1.0.2",
         "source":
-          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/ppx_sexp_conv-v0.11.0.tar.gz#134d9eec6057db48806d6c62fbbf601d",
+          "archive:https://github.com/mirage/ocaml-cohttp/releases/download/v1.0.2/cohttp-1.0.2.tbz#d0a46e32911773862e1a9b420c0058bc",
         "opam": {
           "packageJson": {
-            "name": "@opam/ppx_sexp_conv",
-            "version": "v0.11.0",
+            "name": "@opam/cohttp-lwt",
+            "version": "1.0.2",
             "esy": {
               "build": [
+                [ "jbuilder", "subst", "-n", "%{name}%" ],
                 [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
                 [ "sh", "-c", "(esy-installer || true)" ]
               ],
@@ -620,43 +774,8 @@
               "ocaml": "*",
               "@esy-ocaml/substs": "*",
               "@esy-ocaml/esy-installer": "*",
-              "@opam/ppxlib": "*",
-              "@opam/ocaml-migrate-parsetree": "*",
-              "@opam/base": "*",
-              "@opam/jbuilder": "*"
-            }
-          },
-          "files": [],
-          "patches": []
-        }
-      },
-      {
-        "name": "@opam/fieldslib",
-        "version": "opam:v0.11.0",
-        "source":
-          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/fieldslib-v0.11.0.tar.gz#a42506b460a1dc47fb65a37d875211ae",
-        "opam": {
-          "packageJson": {
-            "name": "@opam/fieldslib",
-            "version": "v0.11.0",
-            "esy": {
-              "build": [
-                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
-                [ "sh", "-c", "(esy-installer || true)" ]
-              ],
-              "install": [],
-              "buildsInSource": true,
-              "exportedEnv": {}
-            },
-            "peerDependencies": { "ocaml": "*" },
-            "optDependencies": {},
-            "dependencies": {
-              "ocaml": "*",
-              "@esy-ocaml/substs": "*",
-              "@esy-ocaml/esy-installer": "*",
-              "@opam/ppxlib": "*",
-              "@opam/ocaml-migrate-parsetree": "*",
-              "@opam/base": "*",
+              "@opam/lwt": "*",
+              "@opam/cohttp": "*",
               "@opam/jbuilder": "*"
             }
           },
@@ -702,6 +821,40 @@
         }
       },
       {
+        "name": "@opam/fieldslib",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/fieldslib-v0.11.0.tar.gz#a42506b460a1dc47fb65a37d875211ae",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/fieldslib",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ppxlib": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/base": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
         "name": "@opam/ocaml-compiler-libs",
         "version": "opam:v0.11.0",
         "source":
@@ -737,6 +890,47 @@
         "version": "0.0.1",
         "source":
           "archive:https://registry.npmjs.org/@esy-ocaml/substs/-/substs-0.0.1.tgz#59ebdbbaedcda123fc7ed8fb2b302b7d819e9a46"
+      },
+      {
+        "name": "@opam/conduit",
+        "version": "opam:1.1.0",
+        "source":
+          "archive:https://github.com/mirage/ocaml-conduit/releases/download/v1.1.0/conduit-1.1.0.tbz#eb1d02c80d06ef812d97dc1ab588b597",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/conduit",
+            "version": "1.1.0",
+            "esy": {
+              "build": [
+                [
+                  "jbuilder", "subst", "-p", "%{name}%", "--name", "%{name}%"
+                ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ipaddr": "*",
+              "@opam/logs": "*",
+              "@opam/result": "*",
+              "@opam/uri": "*",
+              "@opam/astring": "*",
+              "@opam/sexplib": "*",
+              "@opam/ppx_sexp_conv": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
       },
       {
         "name": "ocaml",
@@ -842,14 +1036,14 @@
         }
       },
       {
-        "name": "@opam/ppx_type_conv",
-        "version": "opam:v0.11.0",
+        "name": "@opam/ppx_sexp_conv",
+        "version": "opam:v0.11.2",
         "source":
-          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/ppx_type_conv-v0.11.0.tar.gz#34a6339cf7259e114b2946c615fed9b8",
+          "archive:https://github.com/janestreet/ppx_sexp_conv/archive/v0.11.2.tar.gz#77d3b30b3d9c5810552bde2027656b8d",
         "opam": {
           "packageJson": {
-            "name": "@opam/ppx_type_conv",
-            "version": "v0.11.0",
+            "name": "@opam/ppx_sexp_conv",
+            "version": "v0.11.2",
             "esy": {
               "build": [
                 [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
@@ -866,6 +1060,8 @@
               "@esy-ocaml/substs": "*",
               "@esy-ocaml/esy-installer": "*",
               "@opam/ppxlib": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/base": "*",
               "@opam/jbuilder": "*"
             }
           },
@@ -900,6 +1096,41 @@
               "ocaml": "*",
               "@esy-ocaml/substs": "*",
               "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ipaddr",
+        "version": "opam:2.8.0",
+        "source":
+          "archive:https://github.com/mirage/ocaml-ipaddr/releases/download/2.8.0/ipaddr-2.8.0.tbz#f3442867873b4b60d7860283ff98c3c8",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ipaddr",
+            "version": "2.8.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": { "@opam/base-unix": "*" },
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/sexplib": "*",
+              "@opam/ppx_sexp_conv": "*",
+              "@opam/base-bytes": "*",
+              "@opam/jbuilder": "*"
             }
           },
           "files": [],
@@ -1001,13 +1232,13 @@
       },
       {
         "name": "@opam/cohttp",
-        "version": "opam:1.0.2",
+        "version": "opam:1.0.0",
         "source":
-          "archive:https://github.com/mirage/ocaml-cohttp/releases/download/v1.0.2/cohttp-1.0.2.tbz#d0a46e32911773862e1a9b420c0058bc",
+          "archive:https://github.com/mirage/ocaml-cohttp/releases/download/v1.0.0/cohttp-1.0.0.tbz#756f590576d4a60ce2382ef89274b44b",
         "opam": {
           "packageJson": {
             "name": "@opam/cohttp",
-            "version": "1.0.2",
+            "version": "1.0.0",
             "esy": {
               "build": [
                 [ "jbuilder", "subst", "-n", "%{name}%" ],
@@ -1034,43 +1265,6 @@
               "@opam/re": "*",
               "@opam/base-bytes": "*",
               "@opam/jsonm": "*",
-              "@opam/ppx_type_conv": "*",
-              "@opam/jbuilder": "*"
-            }
-          },
-          "files": [],
-          "patches": []
-        }
-      },
-      {
-        "name": "@opam/ppxlib",
-        "version": "opam:0.2.1",
-        "source":
-          "archive:https://github.com/ocaml-ppx/ppxlib/releases/download/0.2.1/ppxlib-0.2.1.tbz#d59ee60d85a374699ae492b7853a090b",
-        "opam": {
-          "packageJson": {
-            "name": "@opam/ppxlib",
-            "version": "0.2.1",
-            "esy": {
-              "build": [
-                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
-                [ "sh", "-c", "(esy-installer || true)" ]
-              ],
-              "install": [],
-              "buildsInSource": true,
-              "exportedEnv": {}
-            },
-            "peerDependencies": { "ocaml": "*" },
-            "optDependencies": {},
-            "dependencies": {
-              "ocaml": "*",
-              "@esy-ocaml/substs": "*",
-              "@esy-ocaml/esy-installer": "*",
-              "@opam/stdio": "*",
-              "@opam/ppx_derivers": "*",
-              "@opam/ocaml-migrate-parsetree": "*",
-              "@opam/ocaml-compiler-libs": "*",
-              "@opam/base": "*",
               "@opam/jbuilder": "*"
             }
           },
@@ -1101,6 +1295,40 @@
               "ocaml": "*",
               "@esy-ocaml/substs": "*",
               "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/astring",
+        "version": "opam:0.8.3",
+        "source":
+          "archive:http://erratique.ch/software/astring/releases/astring-0.8.3.tbz#c5bf6352b9ac27fbeab342740f4fa870",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/astring",
+            "version": "0.8.3",
+            "esy": {
+              "build": [
+                [ "ocaml", "pkg/pkg.ml", "build", "--pinned", "%{pinned}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/base-bytes": "*",
+              "@opam/topkg": "*",
+              "@opam/ocamlbuild": "*",
+              "@opam/ocamlfind": "*"
             }
           },
           "files": [],
@@ -1202,6 +1430,124 @@
         }
       },
       {
+        "name": "@opam/fmt",
+        "version": "opam:0.8.5",
+        "source":
+          "archive:http://erratique.ch/software/fmt/releases/fmt-0.8.5.tbz#77b64aa6f20f09de28f2405d6195f12c",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/fmt",
+            "version": "0.8.5",
+            "esy": {
+              "build": [
+                [
+                  "ocaml", "pkg/pkg.ml", "build", "--dev-pkg", "%{pinned}%",
+                  "--with-base-unix", "%{base-unix:installed}%",
+                  "--with-cmdliner", "%{cmdliner:installed}%"
+                ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {
+              "@opam/cmdliner": "*",
+              "@opam/base-unix": "*"
+            },
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/uchar": "*",
+              "@opam/result": "*",
+              "@opam/topkg": "*",
+              "@opam/ocamlbuild": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ppxlib",
+        "version": "opam:0.3.0",
+        "source":
+          "archive:https://github.com/ocaml-ppx/ppxlib/archive/0.3.0.tar.gz#e6ff83b1643a44fcb6b0acde4d2aa299",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ppxlib",
+            "version": "0.3.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/stdio": "*",
+              "@opam/ppx_derivers": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/ocaml-compiler-libs": "*",
+              "@opam/base": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/cohttp-lwt-unix",
+        "version": "opam:1.0.2",
+        "source":
+          "archive:https://github.com/mirage/ocaml-cohttp/releases/download/v1.0.2/cohttp-1.0.2.tbz#d0a46e32911773862e1a9b420c0058bc",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/cohttp-lwt-unix",
+            "version": "1.0.2",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst", "-n", "%{name}%" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/base-unix": "*",
+              "@opam/lwt": "*",
+              "@opam/cohttp-lwt": "*",
+              "@opam/fmt": "*",
+              "@opam/logs": "*",
+              "@opam/magic-mime": "*",
+              "@opam/cmdliner": "*",
+              "@opam/conduit-lwt-unix": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
         "name": "@opam/ocaml-migrate-parsetree",
         "version": "opam:1.0.11",
         "source":
@@ -1241,6 +1587,40 @@
           "archive:https://registry.npmjs.org/@esy-ocaml/esy-installer/-/esy-installer-0.0.0.tgz#6b0e2bd4ee43531ac74793fe55cfcc3aca197a66"
       },
       {
+        "name": "@opam/cmdliner",
+        "version": "opam:1.0.2",
+        "source":
+          "archive:http://erratique.ch/software/cmdliner/releases/cmdliner-1.0.2.tbz#ab2f0130e88e8dcd723ac6154c98a881",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/cmdliner",
+            "version": "1.0.2",
+            "esy": {
+              "build": [
+                [ "ocaml", "pkg/pkg.ml", "build", "--pinned", "%{pinned}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/result": "*",
+              "@opam/topkg": "*",
+              "@opam/ocamlbuild": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
         "name": "refmterr",
         "version": "3.1.7",
         "source":
@@ -1267,6 +1647,59 @@
               "@esy-ocaml/substs": "*",
               "@esy-ocaml/esy-installer": "*",
               "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/lwt",
+        "version": "opam:3.2.1",
+        "source":
+          "archive:https://github.com/ocsigen/lwt/archive/3.2.1.tar.gz#13613bbf6b27d198bafcbd9b253a0076",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/lwt",
+            "version": "3.2.1",
+            "esy": {
+              "build": [
+                [
+                  "ocaml", "src/util/configure.ml", "-use-libev",
+                  "%{conf-libev:installed}%", "-use-camlp4",
+                  "%{camlp4:installed}%"
+                ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "ocaml", "src/util/install_filter.ml" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {
+                "CAML_LD_LIBRARY_PATH": {
+                  "val":
+                    "#{@opam/lwt.lib / 'stublibs' : $CAML_LD_LIBRARY_PATH}",
+                  "scope": "global"
+                }
+              }
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {
+              "@opam/conf-libev": "*",
+              "@opam/camlp4": "*",
+              "@opam/base-unix": "*",
+              "@opam/base-threads": "*"
+            },
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/result": "*",
+              "@opam/ppx_tools_versioned": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/ocamlfind": "*",
+              "@opam/jbuilder": "*",
+              "@opam/cppo": "*"
             }
           },
           "files": [],
@@ -1302,6 +1735,43 @@
               "@opam/topkg": "*",
               "@opam/ocamlbuild": "*",
               "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/uri",
+        "version": "opam:1.9.6",
+        "source":
+          "archive:https://github.com/mirage/ocaml-uri/releases/download/v1.9.6/uri-1.9.6.tbz#a6c4fbbe8e3fd84059fac7bd7bc7b3d2",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/uri",
+            "version": "1.9.6",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/stringext": "*",
+              "@opam/sexplib": "*",
+              "@opam/re": "*",
+              "@opam/ppx_sexp_conv": "*",
+              "@opam/base-bytes": "*",
+              "@opam/jbuilder": "*"
             }
           },
           "files": [],
