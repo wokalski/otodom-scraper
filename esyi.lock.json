@@ -1,0 +1,1378 @@
+{
+  "rootDependenciesHash": "478586cdea0a65bbcf06043a4303a6af",
+  "solution": {
+    "root": { "name": "Properties", "version": "path:.", "source": "path:." },
+    "dependencies": [
+      {
+        "name": "@opam/merlin-extend",
+        "version": "opam:0.3",
+        "source":
+          "archive:https://github.com/let-def/merlin-extend/archive/v0.3.tar.gz#9c6dfd4f53328f02f12fcc265f4e2dda",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/merlin-extend",
+            "version": "0.3",
+            "esy": {
+              "build": [
+                [ "%{make}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [ [ "%{make}%", "install" ] ],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/cppo": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/yojson",
+        "version": "opam:1.4.1",
+        "source":
+          "archive:https://github.com/mjambon/yojson/archive/v1.4.1.tar.gz#3ea6e36422dd670e8ab880710d5f7398",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/yojson",
+            "version": "1.4.1",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/biniou": "*",
+              "@opam/easy-format": "*",
+              "@opam/cppo": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/stdio",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/stdio-v0.11.0.tar.gz#2db42ee38c91b3ff7126c2634c407b99",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/stdio",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/base": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/conf-m4",
+        "version": "opam:1",
+        "source": "no-source:",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/conf-m4",
+            "version": "1",
+            "esy": {
+              "build": [
+                [ "sh", "-exc", "echo | m4" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/re",
+        "version": "opam:1.7.3",
+        "source":
+          "archive:https://github.com/ocaml/ocaml-re/releases/download/1.7.3/re-1.7.3.tbz#d2a74ca77216861bce4449600a132de9",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/re",
+            "version": "1.7.3",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst", "-n", "%{name}%" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/uri",
+        "version": "opam:1.9.6",
+        "source":
+          "archive:https://github.com/mirage/ocaml-uri/releases/download/v1.9.6/uri-1.9.6.tbz#a6c4fbbe8e3fd84059fac7bd7bc7b3d2",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/uri",
+            "version": "1.9.6",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/stringext": "*",
+              "@opam/sexplib": "*",
+              "@opam/re": "*",
+              "@opam/ppx_sexp_conv": "*",
+              "@opam/base-bytes": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/menhir",
+        "version": "opam:20171013",
+        "source":
+          "archive:http://gallium.inria.fr/~fpottier/menhir/menhir-20171013.tar.gz#620863edea40437390ee5e5bd82fba11",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/menhir",
+            "version": "20171013",
+            "esy": {
+              "build": [
+                [
+                  "%{make}%", "-f", "Makefile", "PREFIX=%{prefix}%",
+                  "USE_OCAMLFIND=true", "docdir=%{doc}%/menhir",
+                  "libdir=%{lib}%/menhir", "mandir=%{man}%/man1"
+                ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [
+                [
+                  "%{make}%", "-f", "Makefile", "install",
+                  "PREFIX=%{prefix}%", "docdir=%{doc}%/menhir",
+                  "libdir=%{lib}%/menhir", "mandir=%{man}%/man1"
+                ]
+              ],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ocamlfind": "*",
+              "@opam/ocamlbuild": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/topkg",
+        "version": "opam:0.9.1",
+        "source":
+          "archive:http://erratique.ch/software/topkg/releases/topkg-0.9.1.tbz#8978a0595db1a22e4251ec62735d4b84",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/topkg",
+            "version": "0.9.1",
+            "esy": {
+              "build": [
+                [
+                  "ocaml", "pkg/pkg.ml", "build", "--pkg-name", "%{name}%",
+                  "--dev-pkg", "%{pinned}%"
+                ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/result": "*",
+              "@opam/ocamlbuild": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ppx_fields_conv",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/ppx_fields_conv-v0.11.0.tar.gz#72f207c23d65f7f3eaabcc92e33ccdab",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ppx_fields_conv",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ppxlib": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/fieldslib": "*",
+              "@opam/base": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/easy-format",
+        "version": "opam:1.3.1",
+        "source":
+          "archive:https://github.com/mjambon/easy-format/archive/v1.3.1.tar.gz#4e163700fb88fdcd6b8976c3a216c8ea",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/easy-format",
+            "version": "1.3.1",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/num",
+        "version": "opam:1.1",
+        "source":
+          "archive:https://github.com/ocaml/num/archive/v1.1.tar.gz#710cbe18b144955687a03ebab439ff2b",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/num",
+            "version": "1.1",
+            "esy": {
+              "build": [ [ "make" ] ],
+              "install": [ [ "make", "findlib-install" ] ],
+              "buildsInSource": true,
+              "exportedEnv": {
+                "CAML_LD_LIBRARY_PATH": {
+                  "val":
+                    "#{@opam/num.install / 'lib' / 'num' : $CAML_LD_LIBRARY_PATH}",
+                  "scope": "global"
+                }
+              }
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [
+            [
+              "findlib-install.patch",
+              "From 7688bb4fea24463c92e9c4870acc08495a4c77cb Mon Sep 17 00:00:00 2001\nFrom: David Allsopp <david.allsopp@metastack.com>\nDate: Wed, 10 Jan 2018 15:20:46 +0000\nSubject: [PATCH] Provide findlib-install target\n\nAllows installing the entire library using ocamlfind.\n---\n Makefile     | 10 +++++++++-\n src/META     | 17 -----------------\n src/META.in  | 19 +++++++++++++++++++\n src/Makefile | 17 +++++++++++++++--\n 4 files changed, 43 insertions(+), 20 deletions(-)\n delete mode 100644 src/META\n create mode 100644 src/META.in\n\ndiff --git a/Makefile b/Makefile\nindex 6a5d08f..b40e588 100644\n--- a/Makefile\n+++ b/Makefile\n@@ -14,8 +14,16 @@ install:\n \t$(MAKE) -C src install\n \t$(MAKE) -C toplevel install\n \n+findlib-install:\n+\t$(MAKE) -C src findlib-install\n+\t$(MAKE) -C toplevel install\n+\n uninstall:\n \t$(MAKE) -C src uninstall\n \t$(MAKE) -C toplevel uninstall\n \n-.PHONY: all test clean install uninstall\n+findlib-uninstall:\n+\t$(MAKE) -C src findlib-uninstall\n+\t$(MAKE) -C toplevel uninstall\n+\n+.PHONY: all test clean install uninstall findlib-install findlib-uninstall\ndiff --git a/src/META b/src/META\ndeleted file mode 100644\nindex 66ac170..0000000\n--- a/src/META\n+++ /dev/null\n@@ -1,17 +0,0 @@\n-# This META is the one provided by findlib when the \"num\" library was\n-# part of the core OCaml distribution.  For backward compatibility,\n-# it installs into OCaml's standard library directory, not in a subdirectory\n-\n-requires = \"num.core\"\n-requires(toploop) = \"num.core,num-top\"\n-version = \"1.0\"\n-description = \"Arbitrary-precision rational arithmetic\"\n-package \"core\" (\n-  directory = \"^\"\n-  version = \"1.0\"\n-  browse_interfaces = \"\"\n-  archive(byte) = \"nums.cma\"\n-  archive(native) = \"nums.cmxa\"\n-  plugin(byte) = \"nums.cma\"\n-  plugin(native) = \"nums.cmxs\"\n-)\ndiff --git a/src/META.in b/src/META.in\nnew file mode 100644\nindex 0000000..b5678b7\n--- /dev/null\n+++ b/src/META.in\n@@ -0,0 +1,19 @@\n+# This META is the one provided by findlib when the \"num\" library was\n+# part of the core OCaml distribution.  For backward compatibility,\n+# it is installed into OCaml's standard library directory. If the\n+# directory line below is removed, then it's installed in a\n+# subdirectory, as normal for a findlib package.\n+\n+requires = \"num.core\"\n+requires(toploop) = \"num.core,num-top\"\n+version = \"1.0\"\n+description = \"Arbitrary-precision rational arithmetic\"\n+package \"core\" (\n+  directory = \"^\"\n+  version = \"1.0\"\n+  browse_interfaces = \"\"\n+  archive(byte) = \"nums.cma\"\n+  archive(native) = \"nums.cmxa\"\n+  plugin(byte) = \"nums.cma\"\n+  plugin(native) = \"nums.cmxs\"\n+)\ndiff --git a/src/Makefile b/src/Makefile\nindex 97dc074..ff271fe 100644\n--- a/src/Makefile\n+++ b/src/Makefile\n@@ -80,21 +80,34 @@ endif\n ifeq \"$(NATDYNLINK)\" \"true\"\n TOINSTALL+=nums.cmxs\n endif\n+ifeq \"$(SUPPORTS_SHARED_LIBRARIES)\" \"true\"\n TOINSTALL_STUBS=dllnums.$(SO)\n+else\n+TOINSTALL_STUBS=\n+endif\n \n install:\n+\tcp META.in META\n \t$(OCAMLFIND) install num META\n+\trm -f META\n \t$(INSTALL_DATA) $(TOINSTALL) $(STDLIBDIR)\n ifeq \"$(SUPPORTS_SHARED_LIBRARIES)\" \"true\"\n \t$(INSTALL_DLL) $(TOINSTALL_STUBS) $(STDLIBDIR)/stublibs\n endif\n \n-uninstall:\n+findlib-install:\n+\tgrep -Fv '^' META.in > META\n+\t$(OCAMLFIND) install num META $(TOINSTALL) $(TOINSTALL_STUBS)\n+\trm -f META\n+\n+findlib-uninstall:\n+\t$(OCAMLFIND) remove num\n+\n+uninstall: findlib-uninstall\n \tcd $(STDLIBDIR) && rm -f $(TOINSTALL)\n ifeq \"$(SUPPORTS_SHARED_LIBRARIES)\" \"true\"\n \tcd $(STDLIBDIR)/stublibs && rm -f $(TOINSTALL_STUBS) \n endif\n-\t$(OCAMLFIND) remove num\n \n clean:\n \trm -f *.cm[ioxta] *.cmx[as] *.cmti *.$(O) *.$(A) *.$(SO)\n-- \n2.14.1\n\n"
+            ],
+            [
+              "installation-warning.patch",
+              "From db8d748b2cad0adc2698e9fcf28727083a711bae Mon Sep 17 00:00:00 2001\nFrom: David Allsopp <david.allsopp@metastack.com>\nDate: Wed, 24 Jan 2018 16:01:56 +0000\nSubject: [PATCH] Warn about installations broken by previous faulty package\n\n---\n Makefile | 33 +++++++++++++++++++++++++++++++++\n 1 file changed, 33 insertions(+)\n\ndiff --git a/Makefile b/Makefile\nindex b40e588..d4dcd70 100644\n--- a/Makefile\n+++ b/Makefile\n@@ -14,9 +14,42 @@ install:\n \t$(MAKE) -C src install\n \t$(MAKE) -C toplevel install\n \n+OCAMLFIND_DIR:=$(dir $(shell command -v ocamlfind 2>/dev/null))\n+OCAMLC_DIR:=$(dir $(shell command -v ocamlc 2>/dev/null))\n+NUM_INSTALLED:=$(shell ocamlfind query num 2>/dev/null)\n+\n+ifeq ($(NUM_INSTALLED),)\n+# The num findlib package is not already present - wohoo!\n+OUR_FAULT=no\n+else\n+ifeq ($(OCAMLFIND_DIR),$(OCAMLC_DIR))\n+# The num findlib package is present, but ocamlc and ocamlfind are in the\n+# same place, which means that either we're looking at a system-installed\n+# ocamlfind (which isn't supported), or the user has done something else\n+# nefarious and doesn't deserve our sympathy (or, at least, our potentially\n+# unhelpful advice)\n+OUR_FAULT=no\n+else\n+# The num findlib package package is present, and ocamlc and ocamlfind reside\n+# in different directories, which means that we're almost certainly looking at\n+# a system switch which has been damaged by a previous num package installation\n+# on an OS which didn't protect the system lib directory.\n+OUR_FAULT=probably\n+endif\n+endif\n+\n findlib-install:\n+ifeq ($(OUR_FAULT),no)\n \t$(MAKE) -C src findlib-install\n \t$(MAKE) -C toplevel install\n+else\n+\t@echo \"\\033[0;31m[ERROR]\\033[m It appears that the num library was previously installed to your system\"\n+\t@echo \"        compiler's lib directory, probably by a faulty opam package.\"\n+\t@echo \"        You will need to remove arith_flags.*, arith_status.*, big_int.*,\"\n+\t@echo \"        int_misc.*, nat.*, num.*, ratio.*, nums.*, libnums.* and\"\n+\t@echo \"        stublibs/dllnums.* from $(shell ocamlc -where).\"\n+\t@false\n+endif\n \n uninstall:\n \t$(MAKE) -C src uninstall\n-- \n2.14.1\n\n"
+            ]
+          ],
+          "patches": [
+            "findlib-install.patch", "installation-warning.patch"
+          ]
+        }
+      },
+      {
+        "name": "@opam/base64",
+        "version": "opam:2.2.0",
+        "source":
+          "archive:https://github.com/mirage/ocaml-base64/releases/download/v2.2.0/base64-2.2.0.tbz#49f2bc4ae37b832c652277c0b701a02a",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/base64",
+            "version": "2.2.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/base-bytes": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@esy-ocaml/reason",
+        "version": "3.2.0",
+        "source":
+          "archive:https://registry.npmjs.org/@esy-ocaml/reason/-/reason-3.2.0.tgz#9b68a6649f3ba38a11a0fdc7b7c004cab512ac8e"
+      },
+      {
+        "name": "@opam/sexplib",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/sexplib-v0.11.0.tar.gz#1d53d945914b6b9a380dc8923f19e9ae",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/sexplib",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/num": "*",
+              "@opam/sexplib0": "*",
+              "@opam/parsexp": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ocamlbuild",
+        "version": "opam:0.12.0",
+        "source":
+          "archive:https://github.com/ocaml/ocamlbuild/archive/0.12.0.tar.gz#442baa19470bd49150f153122e22907b",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ocamlbuild",
+            "version": "0.12.0",
+            "esy": {
+              "build": [
+                [
+                  "%{make}%", "-f", "configure.make", "all",
+                  "OCAMLBUILD_PREFIX=%{prefix}%",
+                  "OCAMLBUILD_BINDIR=%{bin}%", "OCAMLBUILD_LIBDIR=%{lib}%",
+                  "OCAMLBUILD_MANDIR=%{man}%",
+                  "OCAML_NATIVE=%{ocaml-native}%",
+                  "OCAML_NATIVE_TOOLS=%{ocaml-native}%"
+                ],
+                [
+                  "%{make}%", "check-if-preinstalled", "all", "opam-install"
+                ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/cppo",
+        "version": "opam:1.6.4",
+        "source":
+          "archive:https://github.com/mjambon/cppo/archive/v1.6.4.tar.gz#f7a4a6a0e83b76562b45db3a93ffd204",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/cppo",
+            "version": "1.6.4",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/base-unix": "*",
+              "@opam/base-bytes": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/base-unix",
+        "version": "opam:base",
+        "source": "no-source:",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/base-unix",
+            "version": "base",
+            "esy": {
+              "build": [ [ "sh", "-c", "(esy-installer || true)" ] ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/uchar",
+        "version": "opam:0.0.2",
+        "source":
+          "archive:https://github.com/ocaml/uchar/releases/download/v0.0.2/uchar-0.0.2.tbz#c9ba2c738d264c420c642f7bb1cf4a36",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/uchar",
+            "version": "0.0.2",
+            "esy": {
+              "build": [
+                [ "ocaml", "pkg/git.ml" ],
+                [
+                  "ocaml", "pkg/build.ml", "native=%{ocaml-native}%",
+                  "native-dynlink=%{ocaml-native-dynlink}%"
+                ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ocamlbuild": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ppx_sexp_conv",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/ppx_sexp_conv-v0.11.0.tar.gz#134d9eec6057db48806d6c62fbbf601d",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ppx_sexp_conv",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ppxlib": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/base": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/fieldslib",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/fieldslib-v0.11.0.tar.gz#a42506b460a1dc47fb65a37d875211ae",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/fieldslib",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ppxlib": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/base": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/uutf",
+        "version": "opam:1.0.1",
+        "source":
+          "archive:http://erratique.ch/software/uutf/releases/uutf-1.0.1.tbz#b8535f974027357094c5cdb4bf03a21b",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/uutf",
+            "version": "1.0.1",
+            "esy": {
+              "build": [
+                [
+                  "ocaml", "pkg/pkg.ml", "build", "--pinned", "%{pinned}%",
+                  "--with-cmdliner", "%{cmdliner:installed}%"
+                ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": { "@opam/cmdliner": "*" },
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/uchar": "*",
+              "@opam/topkg": "*",
+              "@opam/ocamlbuild": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ocaml-compiler-libs",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/ocaml-compiler-libs-v0.11.0.tar.gz#e170c16186aa55b7e8b11e461418a10a",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ocaml-compiler-libs",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@esy-ocaml/substs",
+        "version": "0.0.1",
+        "source":
+          "archive:https://registry.npmjs.org/@esy-ocaml/substs/-/substs-0.0.1.tgz#59ebdbbaedcda123fc7ed8fb2b302b7d819e9a46"
+      },
+      {
+        "name": "ocaml",
+        "version": "4.6.1",
+        "source":
+          "archive:https://registry.npmjs.org/ocaml/-/ocaml-4.6.1.tgz#8babea2c41a9f734313b4fc1841ec0963c9d7a07"
+      },
+      {
+        "name": "@opam/markup",
+        "version": "opam:0.7.6",
+        "source":
+          "archive:https://github.com/aantron/markup.ml/archive/0.7.6.tar.gz#866dd2cdb3e304787b26fe8ed53f1f67",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/markup",
+            "version": "0.7.6",
+            "esy": {
+              "build": [
+                [ "ocaml", "src/configure.ml" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": { "@opam/lwt": "*" },
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/uutf": "*",
+              "@opam/uchar": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ppx_derivers",
+        "version": "opam:1.0",
+        "source":
+          "archive:https://github.com/ocaml-ppx/ppx_derivers/archive/1.0.tar.gz#4ddce8f43fdb9b0ef0ab6a7cbfebc3e3",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ppx_derivers",
+            "version": "1.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/lambdasoup",
+        "version": "opam:0.6.3",
+        "source":
+          "archive:https://github.com/aantron/lambda-soup/archive/0.6.3.tar.gz#a610e0d26ddafe48fd631f71878db5ec",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/lambdasoup",
+            "version": "0.6.3",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/markup": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ppx_type_conv",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/ppx_type_conv-v0.11.0.tar.gz#34a6339cf7259e114b2946c615fed9b8",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ppx_type_conv",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ppxlib": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/jbuilder",
+        "version": "opam:1.0+beta20",
+        "source":
+          "archive:https://github.com/ocaml/dune/releases/download/1.0+beta20/jbuilder-1.0.beta20.tbz#09b8a90c6e3333aef2cac947424c1d66",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/jbuilder",
+            "version": "1.0+beta20",
+            "esy": {
+              "build": [
+                [ "ocaml", "configure.ml", "--libdir", "%{lib}%" ],
+                [ "ocaml", "bootstrap.ml" ],
+                [ "./boot.exe", "--subst" ],
+                [ "./boot.exe", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ocamlfind",
+        "version": "opam:1.8.0",
+        "source":
+          "archive:http://download.camlcity.org/download/findlib-1.8.0.tar.gz#a710c559667672077a93d34eb6a42e5b",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ocamlfind",
+            "version": "1.8.0",
+            "esy": {
+              "build": [
+                [ "bash", "./_esy/build", "#{ocaml.lib / 'ocaml'}" ]
+              ],
+              "install": [
+                [ "%{make}%", "install" ],
+                [ "install", "-m", "0755", "ocaml-stub", "%{bin}%/ocaml" ]
+              ],
+              "buildsInSource": true,
+              "exportedEnv": {
+                "OCAMLLIB": {
+                  "val": "#{@opam/ocamlfind.install / 'lib' / 'ocaml'}",
+                  "scope": "global"
+                },
+                "CAML_LD_LIBRARY_PATH": {
+                  "val":
+                    "#{@opam/ocamlfind.install / 'lib' / 'ocaml' / 'stublibs' : @opam/ocamlfind.install / 'lib' / 'ocaml' : $CAML_LD_LIBRARY_PATH}",
+                  "scope": "global"
+                },
+                "OCAML_TOPLEVEL_PATH": {
+                  "val": "#{@opam/ocamlfind.install / 'lib' / 'ocaml'}",
+                  "scope": "global"
+                }
+              }
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/conf-m4": "*"
+            }
+          },
+          "files": [
+            [
+              "ocaml-stub",
+              "#!/bin/sh\n\nBINDIR=$(dirname \"$(command -v ocamlc)\")\n\"$BINDIR/ocaml\" -I \"$OCAML_TOPLEVEL_PATH\" \"$@\"\n"
+            ],
+            [
+              "ocamlfind.install",
+              "bin: [\n  \"src/findlib/ocamlfind\" {\"ocamlfind\"}\n  \"?src/findlib/ocamlfind_opt\" {\"ocamlfind\"}\n  \"?tools/safe_camlp4\"\n]\ntoplevel: [\"src/findlib/topfind\"]\n"
+            ],
+            [
+              "_esy/build",
+              "#!/bin/bash\n\nset -euo pipefail\nset -x\n\n#\n# Shim OCAMLLIB so that we can write topfind there\n#\n\nREAL_OCAMLLIB=\"$1\"\n\nmkdir -p $cur__install/lib/ocaml\ncd $cur__install/lib/ocaml\n\nfor filename in `ls -1 $REAL_OCAMLLIB`; do\n  ln -s $REAL_OCAMLLIB/$filename $filename;\ndone\n\n#\n# Build\n#\n\ncd $cur__root\n\nexport OCAMLLIB=\"$cur__install/lib/ocaml\"\n\n./configure \\\n  -bindir $cur__install/bin \\\n  -sitelib $cur__install/lib \\\n  -mandir $cur__install/man \\\n  -config $cur__install/lib/findlib.conf \\\n  -no-custom \\\n  -no-camlp4\n\nmake all\nmake opt\nmake install\n\n(opam-installer --prefix=$cur__install || true)\n"
+            ]
+          ],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/stringext",
+        "version": "opam:1.5.0",
+        "source":
+          "archive:https://github.com/rgrinberg/stringext/archive/1.5.0.zip#867263ea97532f150516677fa994cdf2",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/stringext",
+            "version": "1.5.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst", "-n", "%{name}%" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/base-bytes": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/cohttp",
+        "version": "opam:1.0.2",
+        "source":
+          "archive:https://github.com/mirage/ocaml-cohttp/releases/download/v1.0.2/cohttp-1.0.2.tbz#d0a46e32911773862e1a9b420c0058bc",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/cohttp",
+            "version": "1.0.2",
+            "esy": {
+              "build": [
+                [ "jbuilder", "subst", "-n", "%{name}%" ],
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/base64": "*",
+              "@opam/stringext": "*",
+              "@opam/ppx_sexp_conv": "*",
+              "@opam/ppx_fields_conv": "*",
+              "@opam/sexplib": "*",
+              "@opam/fieldslib": "*",
+              "@opam/uri": "*",
+              "@opam/re": "*",
+              "@opam/base-bytes": "*",
+              "@opam/jsonm": "*",
+              "@opam/ppx_type_conv": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ppxlib",
+        "version": "opam:0.2.1",
+        "source":
+          "archive:https://github.com/ocaml-ppx/ppxlib/releases/download/0.2.1/ppxlib-0.2.1.tbz#d59ee60d85a374699ae492b7853a090b",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ppxlib",
+            "version": "0.2.1",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/stdio": "*",
+              "@opam/ppx_derivers": "*",
+              "@opam/ocaml-migrate-parsetree": "*",
+              "@opam/ocaml-compiler-libs": "*",
+              "@opam/base": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/conf-which",
+        "version": "opam:1",
+        "source": "no-source:",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/conf-which",
+            "version": "1",
+            "esy": {
+              "build": [
+                [ "which", "which" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/sexplib0",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/sexplib0-v0.11.0.tar.gz#1c14ba30b471e49f1b23fea5ff99ea6b",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/sexplib0",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/parsexp",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/parsexp-v0.11.0.tar.gz#816fce8d14b71a379296577c803bdbca",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/parsexp",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/sexplib0": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/result",
+        "version": "opam:1.2",
+        "source":
+          "archive:https://github.com/janestreet/result/archive/1.2.tar.gz#3d5b66c5526918f0f2ca9d6811ef09c8",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/result",
+            "version": "1.2",
+            "esy": {
+              "build": [
+                [ "%{make}%" ],
+                [ "%{make}%", "byte", "result.install" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/ocaml-migrate-parsetree",
+        "version": "opam:1.0.11",
+        "source":
+          "archive:https://github.com/ocaml-ppx/ocaml-migrate-parsetree/releases/download/v1.0.11/ocaml-migrate-parsetree-1.0.11.tbz#26bb1b038de81a79d43ed95c282b2b71",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/ocaml-migrate-parsetree",
+            "version": "1.0.11",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/result": "*",
+              "@opam/jbuilder": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@esy-ocaml/esy-installer",
+        "version": "0.0.0",
+        "source":
+          "archive:https://registry.npmjs.org/@esy-ocaml/esy-installer/-/esy-installer-0.0.0.tgz#6b0e2bd4ee43531ac74793fe55cfcc3aca197a66"
+      },
+      {
+        "name": "refmterr",
+        "version": "3.1.7",
+        "source":
+          "archive:https://registry.npmjs.org/refmterr/-/refmterr-3.1.7.tgz#fdd6a58e212b18c6a0685ff21f27a7df6621b3e8"
+      },
+      {
+        "name": "@opam/base-bytes",
+        "version": "opam:base",
+        "source": "no-source:",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/base-bytes",
+            "version": "base",
+            "esy": {
+              "build": [ [ "sh", "-c", "(esy-installer || true)" ] ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/jsonm",
+        "version": "opam:1.0.1",
+        "source":
+          "archive:http://erratique.ch/software/jsonm/releases/jsonm-1.0.1.tbz#e2ca39eaefd55b8d155c4f1ec5885311",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/jsonm",
+            "version": "1.0.1",
+            "esy": {
+              "build": [
+                [ "ocaml", "pkg/pkg.ml", "build", "--pinned", "%{pinned}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/uutf": "*",
+              "@opam/uchar": "*",
+              "@opam/topkg": "*",
+              "@opam/ocamlbuild": "*",
+              "@opam/ocamlfind": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/base",
+        "version": "opam:v0.11.0",
+        "source":
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.11/files/base-v0.11.0.tar.gz#787aaa04b25eca106ebb9380a32bad66",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/base",
+            "version": "v0.11.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": { "@opam/base-native-int63": "*" },
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/sexplib0": "*",
+              "@opam/jbuilder": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      },
+      {
+        "name": "@opam/biniou",
+        "version": "opam:1.2.0",
+        "source":
+          "archive:https://github.com/mjambon/biniou/archive/v1.2.0.tar.gz#f3e92358e832ed94eaf23ce622ccc2f9",
+        "opam": {
+          "packageJson": {
+            "name": "@opam/biniou",
+            "version": "1.2.0",
+            "esy": {
+              "build": [
+                [ "jbuilder", "build", "-p", "%{name}%", "-j", "%{jobs}%" ],
+                [ "sh", "-c", "(esy-installer || true)" ]
+              ],
+              "install": [],
+              "buildsInSource": true,
+              "exportedEnv": {}
+            },
+            "peerDependencies": { "ocaml": "*" },
+            "optDependencies": {},
+            "dependencies": {
+              "ocaml": "*",
+              "@esy-ocaml/substs": "*",
+              "@esy-ocaml/esy-installer": "*",
+              "@opam/easy-format": "*",
+              "@opam/jbuilder": "*",
+              "@opam/conf-which": "*"
+            }
+          },
+          "files": [],
+          "patches": []
+        }
+      }
+    ]
+  }
+}

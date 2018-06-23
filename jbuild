@@ -1,0 +1,5 @@
+(jbuild_version 1)
+
+(executable
+ ((name scraper)
+  (libraries (yojson cohttp.lwt lambdasoup re.pcre re.str))))
