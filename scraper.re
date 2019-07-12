@@ -1,7 +1,5 @@
 open Soup;
 
-open Cohttp;
-
 open Cohttp_lwt_unix;
 
 open Lwt.Infix;
@@ -27,10 +25,115 @@ let baseURL =
   };
 
 type result =
-  | Finish(list(Cohttp_lwt.Body.t))
+  | Finish
   | Error(Cohttp_lwt_unix.Response.t);
 
-let rec fetchSite = (baseURL, page, body_list) => {
+type listing = {
+  image: string,
+  location: string,
+  url: string,
+  price: string,
+  size: string,
+};
+
+let print_listing = x =>
+  String.concat(
+    "|",
+    [
+      "=IMAGE(\"" ++ x.image ++ "\")",
+      x.url,
+      x.price,
+      x.location,
+      ...switch (propertyType) {
+         | Office => [x.size]
+         | Flat => [x.size]
+         },
+    ],
+  )
+  |> print_endline;
+
+module Str = Re_str;
+
+let imageRegex = Str.regexp("background-image:url(\\(.*\\))");
+
+let locationRegex = Str.regexp(".* Wrocław, \\(.*\\)");
+
+let numberRegex = Re.Pcre.re("\\d") |> Re.compile;
+
+let urlRegex = Str.regexp("\\(#.*\\)");
+
+let require = (desc, str) =>
+  try (
+    {
+      require(str);
+    }
+  ) {
+  | exc =>
+    Printf.fprintf(stderr, "%s", desc);
+    raise(exc);
+  };
+
+let extractListings = x => {
+  let listings = x $ "div[class=\"listing\"]";
+  let articles = listings $$ "article" |> to_list;
+  List.map(
+    article => {
+      let header = article $ "header[class*=\"offer-item-header\"]";
+      let url =
+        header
+        $ "h3"
+        $ "a"
+        |> attribute("href")
+        |> require("url")
+        |> Str.replace_first(urlRegex, "");
+      let location =
+        header
+        $ "p"
+        |> trimmed_texts
+        |> String.concat("")
+        |> Str.replace_first(locationRegex, "\\1");
+      let price =
+        article
+        $ "li[class*=\"offer-item-price\"]"
+        |> leaf_text
+        |> require("price")
+        |> Re.all(numberRegex)
+        |> List.map(x => x |> Re.get_all |> Array.to_list)
+        |> List.concat
+        |> String.concat("");
+      let imageSpan = article $ "span[class*=\"img-cover\"]";
+      let imageDataSrc = imageSpan |> attribute("data-src");
+
+      let imageStyle =
+        imageSpan
+        |> attribute("style")
+        |> Base.Option.map(~f=Str.replace_first(imageRegex, "\\1"));
+
+      let image =
+        switch (imageStyle, imageDataSrc) {
+        | (Some(img), None)
+        | (None, Some(img)) => img
+        | _ =>
+          Printf.fprintf(
+            stderr,
+            "%s: %s",
+            "image",
+            Soup.pretty_print(article $ "span[class*=\"img-cover\"]"),
+          );
+          raise(Not_found);
+        };
+      let size =
+        article
+        $ "li[class*=\"hidden-xs offer-item-area\"]"
+        |> leaf_text
+        |> Base.Option.value(~default="nieznany_rozmiar");
+      {url, location, price, image, size};
+    },
+    articles,
+  );
+};
+
+let rec fetchSite = (baseURL, page) => {
   let fullURL =
     if (page <= 1) {
       baseURL;
@@ -41,14 +144,19 @@ let rec fetchSite = (baseURL, page, body_list) => {
   >>= (
     ((response, body)) =>
       switch (Response.status(response)) {
-      | `OK => fetchSite(baseURL, page + 1, [body, ...body_list])
-      | `Moved_permanently => Lwt.return(Finish(body_list))
+      | `OK =>
+        Cohttp_lwt.Body.to_string(body)
+        >|= Soup.parse
+        >|= extractListings
+        >|= List.iter(print_listing)
+        >>= (_ => fetchSite(baseURL, page + 1))
+      | `Moved_permanently => Lwt.return(Finish)
       | _ => Lwt.return(Error(response))
       }
   );
 };
 
-let fetchSites = baseURL => fetchSite(baseURL, 1, []);
+let fetchSites = baseURL => fetchSite(baseURL, 1);
 
 let rec parseBodies =
   fun
@@ -61,97 +169,13 @@ let rec parseBodies =
         >>= (x => Lwt.return([Soup.parse(x), ...links]))
     );
 
-type listing = {
-  image: string,
-  location: string,
-  url: string,
-  price: string,
-  size: string,
-};
-
-module Str = Re_str;
-
-let imageRegex = Str.regexp("background-image:url(\\(.*\\))");
-
-let locationRegex = Str.regexp(".* Warszawa, \\(.*\\)");
-
-let numberRegex = Re.Pcre.re("\\d") |> Re.compile;
-
-let urlRegex = Str.regexp("\\(#.*\\)");
-
-let extractListings = l =>
-  List.map(
-    x => {
-      let listings = x $ "div[class=\"listing\"]";
-      let articles = listings $$ "article" |> to_list;
-      List.map(
-        article => {
-          let header = article $ "header[class=\"offer-item-header\"]";
-          let url =
-            header
-            $ "h3"
-            $ "a"
-            |> attribute("href")
-            |> require
-            |> Str.replace_first(urlRegex, "");
-          let location =
-            header
-            $ "p"
-            |> leaf_text
-            |> require
-            |> Str.replace_first(locationRegex, "\\1");
-          let price =
-            article
-            $ "li[class=\"offer-item-price\"]"
-            |> leaf_text
-            |> require
-            |> Re.all(numberRegex)
-            |> List.map(x => x |> Re.get_all |> Array.to_list)
-            |> List.concat
-            |> String.concat("");
-          let image =
-            article
-            $ "span[class=\"img-cover\"]"
-            |> attribute("style")
-            |> require
-            |> Str.replace_first(imageRegex, "\\1");
-          let size =
-            article
-            $ "li[class=\"hidden-xs offer-item-area\"]"
-            |> leaf_text
-            |> require;
-          {url, location, price, image, size};
-        },
-        articles,
-      );
-    },
-    l,
-  )
-  |> List.concat;
-
 let extractData =
   fetchSites(baseURL)
   >>= (
     fun
-    | Finish(bodies) => parseBodies(bodies)
+    | Finish => Lwt.return([])
     | Error(_) => Lwt.return([])
   )
-  >>= (x => Lwt.return(extractListings(x)));
+  >|= ignore;
 
-let print_listing = x =>
-  String.concat(
-    "|",
-    [
-      x.image,
-      x.url,
-      x.price,
-      x.location,
-      ...switch (propertyType) {
-         | Office => [x.size]
-         | Flat => []
-         },
-    ],
-  )
-  |> print_endline;
-
-Lwt_main.run(extractData) |> List.iter(print_listing);
+Lwt_main.run(extractData);
