@@ -1,0 +1,4 @@
+(executable
+ (name scraper)
+ (public_name scraper)
+ (libraries yojson cohttp-lwt-unix lambdasoup re.pcre re.str))

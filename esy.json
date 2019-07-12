@@ -4,25 +4,23 @@
   "description": "A tool to fetch and diff items from otodom",
   "license": "MIT",
   "esy": {
-    "build": [["refmterr", "jbuilder", "build"]],
-    "buildsInSource": "_build"
-  },
-  "resolutions": {
-    "**/@opam/result": "1.2",
-    "**/@opam/merlin-extend": "0.3"
+    "build": ["refmterr dune build"],
+    "release": {
+      "bin": ["scraper"]
+    }
   },
   "dependencies": {
-    "@esy-ocaml/esy-installer": "*",
-    "@esy-ocaml/reason": "~3.2.0",
-    "@opam/jbuilder": "1.0+beta20",
-    "refmterr": "^3.1.7",
-    "ocaml": "~4.6.1",
-    "@opam/yojson": "~1.4.1",
-    "@opam/cohttp-lwt-unix": "1.0.2",
+    "@esy-ocaml/reason": ">=3.4.0",
+    "@opam/dune": "^1.7.3",
+    "refmterr": "3.1.10",
+    "ocaml": "~4.7.0",
+    "@opam/yojson": "~1.7.0",
+    "@opam/cohttp-lwt-unix": "2.0.0",
     "@opam/lambdasoup": "~0.6.3",
-    "@opam/re": "~1.7.3"
+    "@opam/re": "~1.7.3",
+    "@opam/tls": "0.10.2"
   },
   "devDependencies": {
-    "@esy-ocaml/merlin": "^3.0.5"
+    "@opam/merlin-lsp": "ocaml/merlin:merlin-lsp.opam#517f577"
   }
 }
