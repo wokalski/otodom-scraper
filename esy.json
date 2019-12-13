@@ -10,17 +10,17 @@
     }
   },
   "dependencies": {
-    "@esy-ocaml/reason": ">=3.4.0",
-    "@opam/dune": "^1.7.3",
-    "refmterr": "3.1.10",
-    "ocaml": "~4.7.0",
+    "reason": "^3.0.0",
+    "@opam/dune": "^1.11.3",
+    "refmterr": "~3.2.0",
+    "ocaml": "~4.8.0",
     "@opam/yojson": "~1.7.0",
-    "@opam/cohttp-lwt-unix": "2.0.0",
+    "@opam/cohttp-lwt-unix": "2.3.0",
     "@opam/lambdasoup": "~0.6.3",
-    "@opam/re": "~1.7.3",
-    "@opam/tls": "0.10.2"
+    "@opam/re": "~1.9.0",
+    "@opam/tls": "~0.10.4"
   },
   "devDependencies": {
-    "@opam/merlin-lsp": "ocaml/merlin:merlin-lsp.opam#517f577"
+    "@opam/merlin-lsp": "ocaml/merlin:merlin-lsp.opam#8c25431"
   }
 }

@@ -4,26 +4,6 @@ open Cohttp_lwt_unix;
 
 open Lwt.Infix;
 
-type propertyType =
-  | Office
-  | Flat;
-
-let propertyType =
-  try (
-    switch (Sys.argv[1]) {
-    | "office" => Office
-    | _ => Flat
-    }
-  ) {
-  | _ => Flat
-  };
-
-let baseURL =
-  switch (propertyType) {
-  | Office => Sys.getenv("OFFICE_SEARCH_URL")
-  | Flat => Sys.getenv("FLAT_SEARCH_URL")
-  };
-
 type result =
   | Finish
   | Error(Cohttp_lwt_unix.Response.t);
@@ -38,16 +18,13 @@ type listing = {
 
 let print_listing = x =>
   String.concat(
-    "|",
+    ",",
     [
       "=IMAGE(\"" ++ x.image ++ "\")",
       x.url,
       x.price,
-      x.location,
-      ...switch (propertyType) {
-         | Office => [x.size]
-         | Flat => [x.size]
-         },
+      "\"" ++ x.location ++ "\"",
+      "\"" ++ x.size ++ "\"",
     ],
   )
   |> print_endline;
@@ -63,11 +40,7 @@ let numberRegex = Re.Pcre.re("\\d") |> Re.compile;
 let urlRegex = Str.regexp("\\(#.*\\)");
 
 let require = (desc, str) =>
-  try (
-    {
-      require(str);
-    }
-  ) {
+  try(require(str)) {
   | exc =>
     Printf.fprintf(stderr, "%s", desc);
     raise(exc);
@@ -98,7 +71,7 @@ let extractListings = x => {
         |> leaf_text
         |> require("price")
         |> Re.all(numberRegex)
-        |> List.map(x => x |> Re.get_all |> Array.to_list)
+        |> List.map(x => x |> Re.Group.all |> Array.to_list)
         |> List.concat
         |> String.concat("");
       let imageSpan = article $ "span[class*=\"img-cover\"]";
@@ -169,8 +142,8 @@ let rec parseBodies =
         >>= (x => Lwt.return([Soup.parse(x), ...links]))
     );
 
-let extractData =
-  fetchSites(baseURL)
+let extractData = url =>
+  fetchSites(url)
   >>= (
     fun
     | Finish => Lwt.return([])
@@ -178,4 +151,10 @@ let extractData =
   )
   >|= ignore;
 
-Lwt_main.run(extractData);
+Arg.parse(
+  [
+    ("--url", Arg.String(s => Lwt_main.run(extractData(s))), "otodom url"),
+  ],
+  ignore,
+  "",
+);
