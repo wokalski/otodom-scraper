@@ -4,9 +4,22 @@ open Cohttp_lwt_unix;
 
 open Lwt.Infix;
 
-type result =
-  | Finish
-  | Error(Cohttp_lwt_unix.Response.t);
+module ScrapingResult = {
+  type t =
+    | Finish
+    | Error(Cohttp_lwt_unix.Response.t);
+};
+
+module Error = {
+  type criticalError =
+    | UnhandledAutosuggestionLevel
+    | UnhandledAutosuggestionResponse
+    | AutoSuggestQueryError;
+  type t =
+    | CriticalError(criticalError)
+    | BadAutosuggestResponse
+    | NoAutosuggestResults;
+};
 
 type listing = {
   image: string,
@@ -106,6 +119,169 @@ let extractListings = x => {
   );
 };
 
+module Filters = {
+  module Keys = {
+    let category = "mieszkania";
+    let typ = "wynajem";
+    let price = "filter_float_price";
+    let size = "filter_float_m";
+    let enumRoomsNum = (~index) =>
+      Printf.sprintf("[filter_enum_rooms_num][%d]", index);
+    let locations = (~index, ~key) =>
+      Printf.sprintf("locations[%d][%s]", index, key);
+  };
+  module Rooms = {
+    type t =
+      | One
+      | Two
+      | Three
+      | Four
+      | Five
+      | Six
+      | Seven
+      | Eight
+      | NineAndMore;
+    module Set =
+      Set.Make({
+        type nonrec t = t;
+        let compare = compare;
+      });
+    let to_int =
+      fun
+      | One => 1
+      | Two => 2
+      | Three => 3
+      | Four => 4
+      | Five => 5
+      | Six => 6
+      | Seven => 7
+      | Eight => 8
+      | NineAndMore => 9;
+    let toQueryParams = rooms => {
+      Set.to_seq(rooms)
+      |> List.of_seq
+      |> List.mapi((index, room) =>
+           (Keys.enumRoomsNum(~index), to_int(room) |> string_of_int)
+         );
+    };
+  };
+  module Locations = {
+    type locationLevel = string;
+    type id = string;
+    type t = {
+      index: int,
+      data: list((locationLevel, id)),
+    };
+    let fromQueryString = (~index, ~searchTerm) => {
+      let autosuggestURL =
+        Uri.of_string(
+          {|https://www.otodom.pl/ajax/geo6/autosuggest?data=%s|},
+        );
+      Client.get(
+        Uri.add_query_param(autosuggestURL, ("data", [searchTerm])),
+      )
+      >>= (
+        ((response, body)) =>
+          switch (Response.status(response)) {
+          | `OK =>
+            Cohttp_lwt.Body.to_string(body)
+            >|= (
+              jsonString => {
+                Error.(
+                  switch (Yojson.Safe.from_string(jsonString)) {
+                  | `List([`Assoc(dict), ..._]) =>
+                    let locationKeys =
+                      switch (List.assoc_opt("level", dict)) {
+                      | Some(`String("REGION")) => Ok(["region_id"])
+                      | Some(`String("SUBREGION")) =>
+                        Ok(["region_id", "subregion_id"])
+                      | Some(`String("CITY")) =>
+                        Ok(["region_id", "subregion_id", "city_id"])
+                      | Some(`String("DISTRICT")) =>
+                        Ok([
+                          "region_id",
+                          "subregion_id",
+                          "city_id",
+                          "district_id",
+                        ])
+                      | Some(`String("STREET")) =>
+                        Ok([
+                          "region_id",
+                          "subregion_id",
+                          "city_id",
+                          "district_id",
+                          "street_id",
+                        ])
+                      | Some(_) =>
+                        Error(CriticalError(UnhandledAutosuggestionLevel))
+                      | None =>
+                        Error(CriticalError(UnhandledAutosuggestionResponse))
+                      };
+                    Base.Result.bind(locationKeys, ~f=locationFragments =>
+                      try({
+                        let data =
+                          List.map(
+                            key =>
+                              switch (List.assoc_opt(key, dict)) {
+                              | Some(`String(id)) => (key, id)
+                              | _ => raise_notrace(Not_found)
+                              },
+                            locationFragments,
+                          );
+                        Ok({index, data});
+                      }) {
+                      | Not_found =>
+                        Error(CriticalError(UnhandledAutosuggestionResponse))
+                      }
+                    );
+                  | `List([]) => Error(NoAutosuggestResults)
+                  | _ =>
+                    Error(CriticalError(UnhandledAutosuggestionResponse))
+                  }
+                );
+              }
+            )
+          | _ => Lwt.return(Error(Error.BadAutosuggestResponse))
+          }
+      );
+    };
+    let toQueryParams = (~index, x) =>
+      List.map(((key, id)) => (Keys.locations(~index, ~key), id), x);
+  };
+  module Range = {
+    type t = {
+      from: option(float),
+      to_: option(float),
+    };
+    let toQueryParams = (~key, {from, to_}) => {
+      let map = (~suffix, value) => {
+        switch (value) {
+        | Some(x) => [(key ++ suffix, x |> string_of_float)]
+        | None => []
+        };
+      };
+      List.append(map(~suffix=":from", from), map(~suffix=":to", to_));
+    };
+  };
+};
+
+module Query = {
+  let make = (~locations, ~priceRange, ~sizeRange, ~noOfRooms, ~page) => {
+    open Filters;
+    let baseURL = Uri.make(~scheme="https", ~host="www.otodom.pl", ());
+    let params =
+      [
+        Locations.toQueryParams(~index=0, locations),
+        Range.toQueryParams(~key=Keys.price, priceRange),
+        Range.toQueryParams(~key=Keys.size, sizeRange),
+        Rooms.toQueryParams(noOfRooms),
+        [("nrAdsPerPage", "72"), ("page", string_of_int(page))],
+      ]
+      |> List.flatten;
+    Uri.add_query_params'(baseURL, params);
+  };
+};
+
 let rec fetchSite = (baseURL, page) => {
   let fullURL =
     if (page <= 1) {
@@ -123,8 +299,8 @@ let rec fetchSite = (baseURL, page) => {
         >|= extractListings
         >|= List.iter(print_listing)
         >>= (_ => fetchSite(baseURL, page + 1))
-      | `Moved_permanently => Lwt.return(Finish)
-      | _ => Lwt.return(Error(response))
+      | `Moved_permanently => Lwt.return(ScrapingResult.Finish)
+      | _ => Lwt.return(ScrapingResult.Error(response))
       }
   );
 };
